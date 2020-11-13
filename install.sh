@@ -20,4 +20,7 @@ fi
 echo "Installing additional programs..."
 sudo apt update && sudo apt -y install neofetch apt-clone
 
+echo "Installing SSH keys..."
+curl https://github.com/linad181.keys -o ~/.ssh/authorized_keys
+
 echo "Installed"
