@@ -17,4 +17,7 @@ else
     sudo apt update && sudo apt -y install vim-scripts
 fi
 
+echo "Installing additional programs..."
+sudo apt update && sudo apt -y install neofetch apt-clone
+
 echo "Installed"
