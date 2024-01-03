@@ -24,8 +24,8 @@ echo -en '\n'
 
 echo "Installing 45Drives Navigator plugin for Cockpit..."
 curl -sSL https://repo.45drives.com/setup -o setup-repo.sh
-bash setup-repo.sh
-apt update && apt install cockpit-navigator -y
+sudo bash setup-repo.sh
+sudo apt update && sudo apt install cockpit-navigator -y
 echo -en '\n'
 echo -en '\n'
 
