@@ -18,10 +18,29 @@ else
 fi
 
 echo "Installing additional programs..."
-sudo apt update && sudo apt -y install neofetch apt-clone curl
+sudo apt update && sudo apt -y install neofetch apt-clone curl cockpit
+
+echo "Installing 45Drives Navigator plugin for Cockpit..."
+
+curl -sSL https://repo.45drives.com/setup -o setup-repo.sh
+bash setup-repo.sh
+apt update && apt install cockpit-navigator -y
+
+addDocker () {
+    wget https://github.com/mrevjd/cockpit-docker/releases/download/v2.0.3/cockpit-docker.tar.gz
+    sudo mv cockpit-docker.tar.gz /usr/share/cockpit
+    sudo tar xf /usr/share/cockpit/cockpit-docker.tar.gz -C /usr/share/cockpit/
+    sudo rm /usr/share/cockpit/cockpit-docker.tar.gz
+}
+
+read -n1 -p "Do you want to add Docker support to Cockpit? [Y,n]" doit 
+case $doit in  
+  y|Y) addDocker ;; 
+  n|N) echo no ;; 
+esac
 
 echo "Installing SSH keys..."
 mkdir ~/.ssh
 curl https://github.com/linad181.keys -o ~/.ssh/authorized_keys
 
-echo "Installed"
+echo "Install finished."
