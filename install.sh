@@ -31,10 +31,10 @@ addCockpit () {
     sudo apt update && sudo apt install cockpit-navigator -y
     echo -en '\n\n'
 
-    read -n1 -p "Do you want to add Docker support to Cockpit? [Y,n]" doit 
+    read -n1 -p "Do you want to add Docker support to Cockpit? [Y/n]" doit 
     case $doit in  
-      y|Y) addDocker ;; 
       n|N) echo -en '\n\n' ;; 
+      *) addDocker ;; 
     esac
 }
 
@@ -49,12 +49,14 @@ addDocker () {
 
 read -n1 -p "Do you want to add Cockpit to this server? [Y/n]" doit
 case $doit in
-  y|Y) addCockpit ;;
   n|N) echo -en '\n\n' ;;
+  *) addDocker ;; 
 esac
 
 echo "Installing SSH keys..."
-mkdir ~/.ssh
+if [ ! -d ~/.ssh]; then 
+    mkdir ~/.ssh
+fi
 curl https://github.com/linad181.keys -o ~/.ssh/authorized_keys
 echo -en '\n\n'
 
