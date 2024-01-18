@@ -17,21 +17,20 @@ else
     sudo apt update && sudo apt -y install vim-scripts
 fi
 
-echo "Installing additional programs..."
-sudo apt -y install neofetch apt-clone curl cockpit
+echo "\n\nInstalling additional programs..."
+sudo apt -y install neofetch apt-clone curl
 echo -en '\n\n'
 
 addCockpit () {
-    echo "Installing cockpit with 45Drives Navigator add-on..."
+    echo "\n\nInstalling cockpit with 45Drives Navigator add-on..."
     sudo apt -y install cockpit
-    echo -en '\n'
-    echo "Installing 45Drives Navigator plugin for Cockpit..."
+    
+    echo "\n\nInstalling 45Drives Navigator plugin for Cockpit..."
     curl -sSL https://repo.45drives.com/setup -o setup-repo.sh
     sudo bash setup-repo.sh
     sudo apt update && sudo apt install cockpit-navigator -y
-    echo -en '\n\n'
 
-    read -n1 -p "Do you want to add Docker support to Cockpit? [Y/n]" doit 
+    read -n1 -p "\n\nDo you want to add Docker support to Cockpit? [Y/n]" doit 
     case $doit in  
       n|N) echo -en '\n\n' ;; 
       *) addDocker ;; 
