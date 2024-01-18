@@ -50,7 +50,7 @@ addDocker () {
 read -n1 -p "Do you want to add Cockpit to this server? [Y/n]" doit
 case $doit in
   n|N) echo -en '\n\n' ;;
-  *) addDocker ;; 
+  *) addCockpit ;; 
 esac
 
 echo "Installing SSH keys..."
