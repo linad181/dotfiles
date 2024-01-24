@@ -50,8 +50,8 @@ addDocker () {
     echo -en '\n\n'
 }
 
-if hash cockpit  2>/dev/null; then
-    echo "Cockpit  installed"
+if { "$(dpkg -l | awk '/cockpit/ {print }' | wc -l)" -ge 1 ]; then
+    echo "Cockpit installed"
     echo -en '\n\n'
 else
     read -n1 -p "Do you want to add Cockpit to this server? [Y/n]" doit
