@@ -62,7 +62,7 @@ else
 fi
 
 echo "Installing SSH keys..."
-if [ ! -d ~/.ssh]; then 
+if [ ! -d ~/.ssh ]; then 
     mkdir ~/.ssh
 fi
 curl https://github.com/linad181.keys -o ~/.ssh/authorized_keys
