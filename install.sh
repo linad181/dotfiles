@@ -50,7 +50,7 @@ addDocker () {
     echo -en '\n\n'
 }
 
-if { "$(dpkg -l | awk '/cockpit/ {print }' | wc -l)" -ge 1 ]; then
+if [ "$(dpkg -l | awk '/cockpit/ {print }' | wc -l)" -ge 1 ]; then
     echo "Cockpit installed"
     echo -en '\n\n'
 else
