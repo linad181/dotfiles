@@ -50,11 +50,16 @@ addDocker () {
     echo -en '\n\n'
 }
 
-read -n1 -p "Do you want to add Cockpit to this server? [Y/n]" doit
-case $doit in
-  n|N) echo -en '\n\n' ;;
-  *) addCockpit ;; 
-esac
+if hash cockpit  2>/dev/null; then
+    echo "Cockpit  installed"
+    echo -en '\n\n' ;;
+else
+    read -n1 -p "Do you want to add Cockpit to this server? [Y/n]" doit
+    case $doit in
+      n|N) echo -en '\n\n' ;;
+      *) addCockpit ;; 
+    esac
+fi
 
 echo "Installing SSH keys..."
 if [ ! -d ~/.ssh]; then 
